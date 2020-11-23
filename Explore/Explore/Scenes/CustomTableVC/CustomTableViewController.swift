@@ -22,12 +22,9 @@ class CustomTableViewController: BaseViewController, BaseTableViewCellProtocol, 
     
     private func registerNibs() {
         let cellClasses = tableViewVM?.getCellsToRegister() ?? []
-//        for cell in cellClasses {
-//            tbleViewBase.register(CategoryCell.self, forCellReuseIdentifier: cell)
-//        }
-//        
-        tbleViewBase.register(CategoryCell.self, forCellReuseIdentifier: "CategoryCell")
-        tbleViewBase.register(VendorCell.self, forCellReuseIdentifier: "VendorCell")
+        for cell in cellClasses {
+            tbleViewBase.register(NSClassFromString("Explore."+cell), forCellReuseIdentifier: cell)
+        }
     }
     
     private func setupTableView() {
