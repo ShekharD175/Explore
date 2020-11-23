@@ -26,6 +26,14 @@ class Constants {
         case topSeller = "Top Sellers"
     }
     
+    enum TAB_TYPE: Int {
+        case home = 0
+        case search
+        case graph
+        case people
+        case hint
+    }
+    
     static let TOPBAR_HEIGHT : CGFloat = 80.0
     static let TOPBAR_BTN_HEIGHT : CGFloat = 25.0
     static let STANDARD_PADDING : CGFloat = 15.0

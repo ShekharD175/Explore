@@ -10,6 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController, BaseViewModelOutputProtocol {
     
+    private var tabBarView: TabBar!
     private var topBarView: TopBar!
 //    private var tabBarView: TabBarView!
     var viewModel: BaseViewModel?
@@ -17,6 +18,7 @@ class BaseViewController: UIViewController, BaseViewModelOutputProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTopBar()
+        self.setupTabBar()
     }
     
     func setupTopBar() {
@@ -32,6 +34,18 @@ class BaseViewController: UIViewController, BaseViewModelOutputProtocol {
         
         self.view.addSubview(topBarView)        
         self.topBarView.setupTopbar(config: TopBarConfig.init(title: "Explore1", menuImage: #imageLiteral(resourceName: "menu"), bellImage: #imageLiteral(resourceName: "bell")))
+    }
+    
+    func setupTabBar() {
+        self.tabBarView = TabBar.init(frame: CGRect.zero)
+        self.view.addSubview(self.tabBarView)
+        
+        self.tabBarView.snp.makeConstraints { (make) in
+            make.leading.equalTo(0)
+            make.trailing.equalTo(0)
+            make.bottom.equalTo(0)
+            make.height.equalTo(Constants.TOPBAR_HEIGHT)
+        }
     }
     
     func setVisibilityOfTopBar(_ status: Bool) {

@@ -50,7 +50,7 @@ class DashboardController: CustomTableViewController, DashboardVMOutputProtocol 
             make.top.equalTo(self.view.snp.top).offset((Constants.TOPBAR_HEIGHT+Constants.TAB_SELECTION_VIEW_HEIGHT) + 2*Constants.STANDARD_PADDING)
             make.leading.equalTo(0)
             make.trailing.equalTo(0)
-            make.bottom.equalTo(0)
+            make.bottom.equalTo(-Constants.TOPBAR_HEIGHT)
         }
     }
     
@@ -66,7 +66,7 @@ class DashboardController: CustomTableViewController, DashboardVMOutputProtocol 
             make.top.equalTo(self.view.snp.top).offset((Constants.TOPBAR_HEIGHT+Constants.TAB_SELECTION_VIEW_HEIGHT) + 2*Constants.STANDARD_PADDING)
             make.leading.equalTo(0)
             make.trailing.equalTo(0)
-            make.bottom.equalTo(self.view.snp.bottom).offset(0)
+            make.bottom.equalTo(self.view.snp.bottom).offset(-Constants.TOPBAR_HEIGHT)
         }
         
         self.themesCollectionView.isHidden = true
