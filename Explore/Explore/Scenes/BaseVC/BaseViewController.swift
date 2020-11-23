@@ -44,7 +44,7 @@ class BaseViewController: UIViewController, BaseViewModelOutputProtocol {
             make.leading.equalTo(0)
             make.trailing.equalTo(0)
             make.bottom.equalTo(0)
-            make.height.equalTo(Constants.TOPBAR_HEIGHT)
+            make.height.equalTo(Constants.TOPBAR_HEIGHT - Constants.SHORT_PADDING)
         }
     }
     

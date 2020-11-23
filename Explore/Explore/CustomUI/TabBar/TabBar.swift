@@ -40,12 +40,11 @@ class TabBar: UIView {
         topSeparatorView = UIView(frame: .zero)
         topSeparatorView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.addSubview(topSeparatorView)
-        
-        let arrOfItems = ["Home","Search","Graph","People","Hints"]
+        let arrOfItems : [Int] = [0,1,2,3,4]
         for item in arrOfItems {
             let button = UIButton(frame: .zero)
-            button.setTitle(item, for: .normal)
-            button.tag = arrOfItems.firstIndex(of: item)!
+//            button.setImage(item, for: .normal)
+            button.tag = item
             button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             button.roundCorners(radius: 5.0)
             button.addTarget(self, action: #selector(buttonAction(button:)), for: .touchUpInside)
@@ -55,7 +54,7 @@ class TabBar: UIView {
         self.stackView.snp.makeConstraints { (make) in
             make.leading.equalTo(0)
             make.trailing.equalTo(0)
-            make.top.equalTo(0)
+            make.top.equalTo(1)
             make.bottom.equalTo(0)
         }
         
@@ -91,11 +90,22 @@ class TabBar: UIView {
     
     private func updateTabBarUI() {
         let subviews = self.stackView.arrangedSubviews
-        
+        let arrOfItems : [UIImage] = [#imageLiteral(resourceName: "home"),#imageLiteral(resourceName: "search"),#imageLiteral(resourceName: "stocks"),#imageLiteral(resourceName: "user"),#imageLiteral(resourceName: "hints")]
         for view in subviews {
             guard let button = view as? UIButton else {
                 return
             }
+            let imgView = UIImageView(frame: .zero)
+            
+            button.addSubview(imgView)
+            
+            imgView.snp.makeConstraints { (make) in
+                make.centerX.equalTo(button.snp.centerX).offset(0)
+                make.centerY.equalTo(button.snp.centerY).offset(0)
+                make.width.equalTo(30)
+                make.height.equalTo(30)
+            }
+            imgView.image = arrOfItems[subviews.firstIndex(of: view)!]
             button.setTitleColor(button.tag == self.seletedTab.rawValue ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             button.backgroundColor = button.tag == self.seletedTab.rawValue ? #colorLiteral(red: 0.2392156863, green: 0.2078431373, blue: 0.768627451, alpha: 1) : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         }

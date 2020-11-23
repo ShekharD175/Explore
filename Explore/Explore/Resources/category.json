@@ -1,14 +1,14 @@
 [
   {
-    "category_image": "menu",
+    "category_image": "stocks",
     "category_name": "Stocks"
 },
   {
-    "category_image": "bell",
+    "category_image": "stocks",
     "category_name": "ETFs"
 },
   {
-    "category_image": "menu",
+    "category_image": "crypto",
     "category_name": "Crypto"
 }
 ]

@@ -4,41 +4,41 @@
         "vendor_subtitle": "MEDI",
         "vendor_trending_value": "+50.78%",
         "trending_type": "top_gainers",
-        "vendor_image" : "bell"
+        "vendor_image" : "medifast"
     },
     {
         "vendor_name": "Pinterest",
         "vendor_subtitle": "PINS",
         "vendor_trending_value": "-4.77%",
         "trending_type": "top_gainers",
-        "vendor_image" : "bell"
+        "vendor_image" : "pinterest"
     },
     {
         "vendor_name": "Slack Technologies",
         "vendor_subtitle": "WORK",
         "vendor_trending_value": "-5.99",
         "trending_type": "top_gainers",
-        "vendor_image" : "bell"
+        "vendor_image" : "slack"
     },
     {
         "vendor_name": "Evoqua Water",
         "vendor_subtitle": "AQUA",
         "vendor_trending_value": "+5.99",
         "trending_type": "top_gainers",
-        "vendor_image" : "bell"
+        "vendor_image" : "evoqua"
     },
     {
         "vendor_name": "Slack Technologies",
         "vendor_subtitle": "WORK",
         "vendor_trending_value": "-5.99",
         "trending_type": "top_sellers",
-        "vendor_image" : "bell"
+        "vendor_image" : "slack"
     },
     {
         "vendor_name": "Evoqua Water",
         "vendor_subtitle": "AQUA",
         "vendor_trending_value": "+5.99",
         "trending_type": "top_sellers",
-        "vendor_image" : "bell"
-    }
+        "vendor_image" : "evoqua"
+    } 
 ]
