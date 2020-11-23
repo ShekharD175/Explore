@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		369CBBB5DF2DDC0EBF6047FA /* Pods_Explore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69FEF78E7A72AEE15B30D71A /* Pods_Explore.framework */; };
+		D31F9A2C256B8A4700B8A1E3 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = D31F9A2B256B8A4700B8A1E3 /* themes.json */; };
+		D31F9A2E256B8BC800B8A1E3 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31F9A2D256B8BC800B8A1E3 /* ThemeModel.swift */; };
+		D3274E25256AEDB80011F856 /* ThemesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3274E24256AEDB80011F856 /* ThemesCollectionCell.swift */; };
 		D360F20A25679402009F8489 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D360F20925679402009F8489 /* AppDelegate.swift */; };
 		D360F20E25679402009F8489 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D360F20D25679402009F8489 /* DashboardController.swift */; };
 		D360F21125679402009F8489 /* Dashboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D360F20F25679402009F8489 /* Dashboard.storyboard */; };
@@ -38,6 +41,9 @@
 		21460EA050616BE7A6E9911E /* Pods-Explore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Explore.debug.xcconfig"; path = "Target Support Files/Pods-Explore/Pods-Explore.debug.xcconfig"; sourceTree = "<group>"; };
 		69FEF78E7A72AEE15B30D71A /* Pods_Explore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Explore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5EDDB67E764A249819DA97F /* Pods-Explore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Explore.release.xcconfig"; path = "Target Support Files/Pods-Explore/Pods-Explore.release.xcconfig"; sourceTree = "<group>"; };
+		D31F9A2B256B8A4700B8A1E3 /* themes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = themes.json; sourceTree = "<group>"; };
+		D31F9A2D256B8BC800B8A1E3 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
+		D3274E24256AEDB80011F856 /* ThemesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionCell.swift; sourceTree = "<group>"; };
 		D360F20625679402009F8489 /* Explore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Explore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D360F20925679402009F8489 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D360F20D25679402009F8489 /* DashboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,14 @@
 				B5EDDB67E764A249819DA97F /* Pods-Explore.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D3274E23256AED910011F856 /* ThemesCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				D3274E24256AEDB80011F856 /* ThemesCollectionCell.swift */,
+			);
+			path = ThemesCollectionCell;
 			sourceTree = "<group>";
 		};
 		D360F1FD25679402009F8489 = {
@@ -153,6 +167,7 @@
 				D370ECE7256A3A6E00DBC24F /* trending.json */,
 				D370ECE5256A39AE00DBC24F /* category.json */,
 				D370ECEB256A42CD00DBC24F /* MockDataProvider.swift */,
+				D31F9A2B256B8A4700B8A1E3 /* themes.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -217,6 +232,7 @@
 		D360F22E2567A816009F8489 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				D3274E23256AED910011F856 /* ThemesCollectionCell */,
 				D370ECDD256A29F100DBC24F /* VendorCell */,
 				D370ECC62567CAA000DBC24F /* CategoryCell */,
 				D360F22F2567A835009F8489 /* BaseTableViewCell */,
@@ -293,6 +309,7 @@
 			children = (
 				D370ECE3256A384A00DBC24F /* CategoryModel.swift */,
 				D370ECE9256A3D8900DBC24F /* TrendingModel.swift */,
+				D31F9A2D256B8BC800B8A1E3 /* ThemeModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -366,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D360F21625679407009F8489 /* LaunchScreen.storyboard in Resources */,
+				D31F9A2C256B8A4700B8A1E3 /* themes.json in Resources */,
 				D360F21325679407009F8489 /* Assets.xcassets in Resources */,
 				D370ECE8256A3A6E00DBC24F /* trending.json in Resources */,
 				D360F21125679402009F8489 /* Dashboard.storyboard in Resources */,
@@ -422,9 +440,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31F9A2E256B8BC800B8A1E3 /* ThemeModel.swift in Sources */,
 				D360F22A2567A763009F8489 /* BaseViewController.swift in Sources */,
 				D370ECD32569092100DBC24F /* TabSelectionView.swift in Sources */,
 				D370ECC52567C97800DBC24F /* DashboardViewModel.swift in Sources */,
+				D3274E25256AEDB80011F856 /* ThemesCollectionCell.swift in Sources */,
 				D370ECDF256A2A3C00DBC24F /* VendorCell.swift in Sources */,
 				D360F21E2567A34D009F8489 /* AppCoordinator.swift in Sources */,
 				D370ECD92569198F00DBC24F /* UIKitExtension.swift in Sources */,

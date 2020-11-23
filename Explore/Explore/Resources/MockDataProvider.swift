@@ -19,6 +19,10 @@ class MockDataProvider {
         return self.loadTrendingJson(fileName: "trending")
     }
     
+    static func fetchThemesData() -> [ThemeModel]? {
+        return self.loadThemesJson(fileName: "themes")
+    }
+    
     private static func loadCategoryJson(fileName: String) -> [CategoryModel]? {
         
        let decoder = JSONDecoder()
@@ -40,6 +44,20 @@ class MockDataProvider {
             let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
             let data = try? Data(contentsOf: url),
             let trending = try? decoder.decode([TrendingModel].self, from: data)
+       else {
+            return nil
+       }
+
+       return trending
+    }
+    
+    private static func loadThemesJson(fileName: String) -> [ThemeModel]? {
+        
+       let decoder = JSONDecoder()
+       guard
+            let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
+            let data = try? Data(contentsOf: url),
+            let trending = try? decoder.decode([ThemeModel].self, from: data)
        else {
             return nil
        }

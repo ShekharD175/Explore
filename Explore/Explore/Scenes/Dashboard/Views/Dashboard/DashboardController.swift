@@ -13,10 +13,12 @@ import Foundation
 class DashboardController: CustomTableViewController, DashboardVMOutputProtocol {
     
     private var tabSelectionView: TabSelectionView!
+    private var themesCollectionView: UICollectionView!
     
     override func loadView() {
         super.loadView()
         self.setupTableView()
+        self.setupCollectionView()
     }
     
     override func viewDidLoad() {
@@ -52,10 +54,22 @@ class DashboardController: CustomTableViewController, DashboardVMOutputProtocol 
         }
     }
     
-    override func setAdditionalDataToCell(cell: BaseTableViewCell, indexPath: IndexPath) {
-        guard let cellValue = cell as? CategoryCell else {
-            return
+    private func setupCollectionView() {
+        let flowLayout = UICollectionViewFlowLayout()
+        themesCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: flowLayout)
+        themesCollectionView.register(ThemesCollectionCell.self, forCellWithReuseIdentifier: "ThemesCollectionCell")
+        themesCollectionView.delegate = self
+        themesCollectionView.dataSource = self
+        themesCollectionView.backgroundColor = .white
+        self.view.addSubview(themesCollectionView)
+        self.themesCollectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view.snp.top).offset((Constants.TOPBAR_HEIGHT+Constants.TAB_SELECTION_VIEW_HEIGHT) + 2*Constants.STANDARD_PADDING)
+            make.leading.equalTo(0)
+            make.trailing.equalTo(0)
+            make.bottom.equalTo(self.view.snp.bottom).offset(0)
         }
+        
+        self.themesCollectionView.isHidden = true
     }
     
     private func getViewModel() -> DashboardViewModel? {
@@ -78,5 +92,45 @@ extension DashboardController: TabSelectionViewDelegate {
             return
         }
         viewModel.tabButtonDidSelected(type: tabType)
+        
+        switch tabType {
+        case .category, .trending:
+            self.tbleViewBase.alpha = 1.0
+            self.tbleViewBase.isHidden = false
+            self.themesCollectionView.alpha = 0.0
+            self.themesCollectionView.isHidden = true
+
+        case .themes:
+            self.tbleViewBase.alpha = 0.0
+            self.tbleViewBase.isHidden = true
+            self.themesCollectionView.alpha = 1.0
+            self.themesCollectionView.isHidden = false
+        }
+        
+    }
+}
+
+extension DashboardController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.getViewModel()?.getThemesData().count ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ThemesCollectionCell", for: indexPath) as! ThemesCollectionCell
+        
+        if let dataArr = MockDataProvider.fetchThemesData() {
+            cell.updateCell(theme: dataArr[indexPath.row])
+        }
+        return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let numberOfItemsPerRow : CGFloat = 2
+        let width = (UIScreen.main.bounds.width-Constants.SHORT_PADDING*7)/numberOfItemsPerRow
+        return CGSize(width: width, height: width+(Constants.SHORT_PADDING*5))
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: Constants.SHORT_PADDING*2 , left: Constants.SHORT_PADDING*2, bottom: Constants.SHORT_PADDING*2, right: Constants.SHORT_PADDING*2)
     }
 }

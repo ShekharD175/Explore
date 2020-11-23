@@ -108,4 +108,8 @@ class DashboardViewModel: BaseTableVMProtocol {
         }
         self.outputDelegate?.presentData()
     }
+    
+    func getThemesData() -> [ThemeModel] {
+        return MockDataProvider.fetchThemesData() ?? [ThemeModel]()
+    }
 }

@@ -34,4 +34,10 @@ extension UIView {
         self.layoutIfNeeded()
         self.layer.cornerRadius = self.frame.size.height/2
     }
+    
+    func roundCorners(radius: CGFloat) {
+        self.clipsToBounds = true
+        self.layoutIfNeeded()
+        self.layer.cornerRadius = radius
+    }
 }
